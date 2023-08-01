@@ -1,4 +1,5 @@
 export type SidebarProps = {
+  active?: boolean
 }
 
 export type SidebarItems = {

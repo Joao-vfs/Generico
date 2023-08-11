@@ -1,38 +1,41 @@
 "use client";
 
+import {
+  generateSideBarClasses,
+  generateSideBarH1Classes,
+  generateSideBarLabelClasses,
+} from "@/app/utils/tailwindClasses";
 import React from "react";
-import { SidebarItems, SidebarProps } from "./type";
+
+type SidebarProps = {
+  active: boolean;
+};
+
+type SidebarItems = {
+  label?: string;
+  links?: string;
+};
 
 const Sidebar: React.FC<SidebarProps> = ({ active }) => {
+
+  const sidebarClasses = generateSideBarClasses(active);
+  const sidebarH1Classes = generateSideBarH1Classes(active);
+  const sidebarLabelClasses = generateSideBarLabelClasses(active);
   const sidebarItems: SidebarItems[] = [
     { label: "Home" },
     { label: "Sobre" },
     { label: "Contatos" },
   ];
+  
   return (
-    <div
-      className={`absolute top-[30%] left-[23%] text-center bg-opacity-40 bg-transparent ${
-        active ? "bg-white" : "bg-black"
-      }`}
-    >
+    <div className={`${sidebarClasses}`}>
       <ul className="flex flex-col gap-4">
-        <h1
-          className={`${
-            active ? "text-blue" : "text-white"
-          } text-5xl transition ease-in-out delay-150 duration-400 animate-fade-up`}
-        >
+        <h1 className={`${sidebarH1Classes}`}>
           Olá bem vindo ao meu Portifólio ;)
         </h1>
         {sidebarItems.map((links, index): any => {
           return (
-            <li
-              className={`  ${
-                active
-                  ? "text-black hover:text-blue"
-                  : "text-blue hover:text-white"
-              } inline-block text-3xl transition ease-in-out delay-150 duration-400 hover:scale-125 cursor-pointer animate-fade-up`}
-              key={index}
-            >
+            <li className={`${sidebarLabelClasses}`} key={index}>
               <span>{links.label}</span>
             </li>
           );

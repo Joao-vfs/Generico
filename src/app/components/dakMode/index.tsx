@@ -1,17 +1,23 @@
-"use client";
-
+import {
+  generateDarkModeClasses,
+  generateDarkModeIconClasses,
+} from "@/app/utils/tailwindClasses";
 import React from "react";
+import { BsCircleFill } from "react-icons/bs";
 
 type DarkModeProps = {
   toggleActive: any;
+  active: boolean;
 };
 
-export const DarkMode: React.FC<DarkModeProps> = ({ toggleActive }) => {
+export const DarkMode: React.FC<DarkModeProps> = ({ toggleActive, active }) => {
+  const darkModeClasses = generateDarkModeClasses(active);
+  const darkModeIconClasses = generateDarkModeIconClasses(active);
   return (
-    <div>
-      <button className="fixed bottom-4 right-4" onClick={toggleActive}>
-        DARK MODE
-      </button>
+    <div className="fixed bottom-4 right-4">
+      <div className={`${darkModeClasses}`} onClick={toggleActive}>
+        <BsCircleFill className={`${darkModeIconClasses}`} />
+      </div>
     </div>
   );
 };

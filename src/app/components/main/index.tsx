@@ -19,7 +19,7 @@ const Main: React.FC<MainProps> = ({ active }) => {
   React.useEffect(() => {
     const timeoutId = setTimeout(() => {
       setShowItalicText(true);
-    }, 2700);
+    }, 4000);
 
     return () => {
       clearTimeout(timeoutId);
@@ -30,7 +30,7 @@ const Main: React.FC<MainProps> = ({ active }) => {
     if (showItalicText) {
       const time = setTimeout(() => {
         setShowButton(true);
-      }, 2500);
+      }, 4900);
       return () => {
         clearTimeout(time);
       };
@@ -38,8 +38,8 @@ const Main: React.FC<MainProps> = ({ active }) => {
   }, [showItalicText]);
 
   return (
-    <main>
-      <section className="mt-[10rem] p-5">
+    <main className="absolute flex flex-col justify-center align-center top-1/2 left-1/2 transform translate-x-[-50%] translate-y-[-50%] text-center p-5">
+      <section className="w-auto">
         <div>
           <>
             <h1 className={`${mainH1Classes}`}>Olá, eu sou o João Vitor</h1>
@@ -48,7 +48,7 @@ const Main: React.FC<MainProps> = ({ active }) => {
           {showItalicText && (
             <>
               <h1 className={`${mainH1ItalicClasses}`}>
-                <em>Desenvolvedor Front-End !</em>
+                <em>Desenvolvedor Front-End.</em>
               </h1>
             </>
           )}
@@ -56,10 +56,10 @@ const Main: React.FC<MainProps> = ({ active }) => {
 
         <article>
           {showButton && (
-            <>
+            <div className="flex justify-center gap-[2.5rem]">
               <Button active={active} title="" />
               <Button active={active} title="" />
-            </>
+            </div>
           )}
         </article>
       </section>

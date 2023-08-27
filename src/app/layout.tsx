@@ -1,8 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Russo_One } from "next/font/google";
 
-const montserrat = Montserrat({
+const russoOne = Russo_One({
   subsets: ["latin"],
   weight: "400",
 });
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={`${montserrat.className}`}>{children}</body>
+      <body className={`${russoOne.className}`}>{children}</body>
     </html>
   );
 }

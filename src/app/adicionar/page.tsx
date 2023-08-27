@@ -1,8 +1,11 @@
 "use client";
 
+import { Header } from "../components/header";
+
 const Add = () => {
   return (
-    <div className="flex justify-center items-center text-5xl text-blue">
+    <div >
+      <Header active={false} />
       <h1>Olá</h1>
     </div>
   );

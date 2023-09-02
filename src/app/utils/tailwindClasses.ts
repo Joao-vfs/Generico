@@ -15,13 +15,11 @@ const generateNavBarOpenClasses = (show: boolean) => {
 };
 
 const generateMainH1Classes = (active: boolean) => {
-  return `${
-    active ? "" : ""
-  } animate-typing-text text-4xl overflow-hidden whitespace-nowrap`;
+  return `${active ? "" : ""}  text-4xl overflow-hidden whitespace-nowrap`;
 };
 
 const generateMainH1ItalicClasses = () => {
-  return `${"animate-typing-italic text-4xl overflow-hidden whitespace-nowrap"}`;
+  return `${" text-4xl overflow-hidden whitespace-nowrap"}`;
 };
 
 const generateButtonClasses = (active: boolean) => {
@@ -34,7 +32,7 @@ const generateButtonClasses = (active: boolean) => {
 const generateSideBarClasses = (active: boolean) => {
   return `
     
-    ${active ? "bg-black text-white" : " bg-white text-black"} 
+    ${active ? "bg-white text-white" : " bg-white text-black"} 
    
   
   `;
@@ -45,12 +43,6 @@ const generateSideBarLabelClasses = (active: boolean) => {
     active ? "" : ""
   } text-1xl flex  gap-[1rem] cursor-pointer animate-fade-up hover:border-b-2`;
 };
-
-// const generateIconClasses = (show: boolean) => {
-//   return `${` text-5xl cursor-pointer transition ease-in-out duration-75 hover:scale-125 animate-fade-left ${
-//     show && "fixed top-5 left-[10%]"
-//   }`}`;
-// };
 
 const generateSideBarIconClasses = (active: boolean) => {
   return `  ${active ? "" : ""} text-3xl flex cursor-pointer animate-fade-left`;
@@ -71,13 +63,12 @@ const generateDarkModeIconClasses = (active: boolean) => {
 };
 
 const generatePageHomeClasses = (active: boolean) => {
-  return `" flex h-screen w-full transition-colors duration-1000 ease-in-out text-white ${
-    active ? "" : ""
+  return `" relative flex flex-col h-screen w-full transition-colors duration-1000 ease-in-out  ${
+    active ? "bg-white text-black" : "bg-black text-white"
   } `;
 };
 
 export {
-  // generateIconClasses,
   generateMainH1Classes,
   generateButtonClasses,
   generateNavBarClasses,

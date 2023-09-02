@@ -8,7 +8,7 @@ import {
 } from "@/app/utils/tailwindClasses";
 
 type MainProps = {
-  active: boolean;
+  active?: boolean | any;
 };
 
 const Main: React.FC<MainProps> = ({ active }) => {
@@ -26,41 +26,21 @@ const Main: React.FC<MainProps> = ({ active }) => {
     };
   }, []);
 
-  React.useEffect(() => {
-    if (showItalicText) {
-      const time = setTimeout(() => {
-        setShowButton(true);
-      }, 4900);
-      return () => {
-        clearTimeout(time);
-      };
-    }
-  }, [showItalicText]);
-
   return (
     <main className="absolute flex flex-col justify-center align-center top-1/2 left-1/2 transform translate-x-[-50%] translate-y-[-50%] text-center p-5">
-      <section className="w-auto">
+      <section>
         <div>
-          <>
-            <h1 className={`${mainH1Classes}`}>Olá, eu sou o João Vitor</h1>
-          </>
+          <h1 className={`${mainH1Classes}`}>Olá, eu sou o João Vitor</h1>
           <br />
-          {showItalicText && (
-            <>
-              <h1 className={`${mainH1ItalicClasses}`}>
-                <em>Desenvolvedor Front-End.</em>
-              </h1>
-            </>
-          )}
+          <h1 className={`${mainH1ItalicClasses}`}>
+            <em>Desenvolvedor Front-End.</em>
+          </h1>
         </div>
-
         <article>
-          {showButton && (
-            <div className="flex justify-center gap-[2.5rem]">
-              <Button active={active} title="" />
-              <Button active={active} title="" />
-            </div>
-          )}
+          <div className="flex justify-center gap-[2.5rem]">
+            <Button active={active} title="" />
+            <Button active={active} title="" />
+          </div>
         </article>
       </section>
     </main>

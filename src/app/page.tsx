@@ -1,39 +1,47 @@
 "use client";
 
 import React, { useState } from "react";
-import { Header } from "./components/header";
-import Main from "./components/main";
+import { About, Add, Contacts, Projects } from "./pages";
 import { DarkMode } from "./components/dakMode";
 import { generatePageHomeClasses } from "./utils/tailwindClasses";
-import fundo from "../app/assets/background.png";
-import Image from "next/image";
+import Sidebar from "./components/sidebar";
+import Main from "./components/main";
+import { Slide } from "./components/slide";
 
 export default function Home() {
-  const [activeDarkMode, setActiveDarkMode] = useState<boolean>(false);
-
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [activeDarkMode, setActiveDarkMode] = useState(false);
   const pageHomeClasses = generatePageHomeClasses(activeDarkMode);
-  // const navBarOpenClasses = generateNavBarOpenClasses();
-
-  const handleToogleActiveDarKMode = () => {
+  const handleToggleActive = () => {
     setActiveDarkMode(!activeDarkMode);
   };
 
+  const handleChangePage = (item: number) => {
+    setCurrentIndex(item);
+  };
+
+  const list: any[] = [
+    { id: 0, component: <Main active={activeDarkMode} /> },
+    { id: 2, component: <About /> },
+    { id: 3, component: <Projects /> },
+    { id: 4, component: <Contacts /> },
+    { id: 5, component: <Add /> },
+  ];
+
   return (
     <>
-      <Image
-        src={fundo}
-        alt="fundo"
-        layout="fill"
-        objectFit="cover"
-        className=" z-[-1]"
-      />
-      <div className={`${pageHomeClasses} backdrop-blur-sm`}>
-        <Header active={activeDarkMode} />
-        <Main active={activeDarkMode} />
-        <DarkMode
+      <div className={`${pageHomeClasses}`}>
+        <Sidebar
           active={activeDarkMode}
-          toggleActive={handleToogleActiveDarKMode}
+          handleChangePage={handleChangePage}
+          activeItemIndex={currentIndex}
         />
+        <Slide
+          list={list}
+          setCurrentIndex={setCurrentIndex}
+          currentIndex={currentIndex}
+        />
+        <DarkMode active={activeDarkMode} toggleActive={handleToggleActive} />
       </div>
     </>
   );

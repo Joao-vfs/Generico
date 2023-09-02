@@ -14,7 +14,7 @@ export const DarkMode: React.FC<DarkModeProps> = ({ toggleActive, active }) => {
   const darkModeClasses = generateDarkModeClasses(active);
   const darkModeIconClasses = generateDarkModeIconClasses(active);
   return (
-    <div className="fixed bottom-4 right-4">
+    <div className="absolute bottom-4 right-4">
       <div className={`${darkModeClasses}`} onClick={toggleActive}>
         <BsCircleFill className={`${darkModeIconClasses}`} />
       </div>

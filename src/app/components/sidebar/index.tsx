@@ -1,63 +1,83 @@
 import React, { useState } from "react";
 import {
+  generateNavBarClasses,
   generateSideBarClasses,
   generateSideBarIconClasses,
   generateSideBarLabelClasses,
 } from "@/app/utils/tailwindClasses";
-import { navigationList } from "../../utils/navigationList";
-import Link from "next/link";
+import { AiFillFolderAdd, AiFillProject } from "react-icons/ai";
+import { HiDocumentText } from "react-icons/hi";
+import { RiContactsFill } from "react-icons/ri";
+import { Url } from "next/dist/shared/lib/router/router";
 
 type SidebarProps = {
   active: boolean;
-  handleToggleShowSideBar: any;
+  handleChangePage: any;
+  activeItemIndex: number;
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ active }) => {
-  const [activeItemIndex, setActiveItemIndex] = useState<number>(0);
-  const sidebarClasses = generateSideBarClasses(active);
+type SidebarItem = {
+  id: number;
+  label: string;
+  icon?: JSX.Element;
+  link: Url;
+};
+
+const Sidebar: React.FC<SidebarProps> = ({
+  active,
+  handleChangePage,
+  activeItemIndex,
+}) => {
+  const navBarClasses = generateNavBarClasses(active);
   const sidebarLabelClasses = generateSideBarLabelClasses(active);
 
-  const handleItemNext = () => {
-    const nextIndex = (activeItemIndex + 1) % navigationList.length;
-    setActiveItemIndex(nextIndex);
-    console.log(nextIndex, "nextIndex");
-  };
 
-  const handleItemPrev = () => {
-    const prevIndex =
-      (activeItemIndex - 1 + navigationList.length) % navigationList.length;
-    setActiveItemIndex(prevIndex);
-  };
+  const SidebarItems: SidebarItem[] = [
+    { id: 0, label: "J-VFS", link: "/" },
+    {
+      id: 1,
+      icon: <HiDocumentText />,
+      label: "SOBRE",
+      link: "/adicionar",
+    },
+    {
+      id: 2,
+      icon: <AiFillProject />,
+      label: "PROJETOS",
+      link: "/adicionar",
+    },
+    {
+      id: 3,
+      icon: <RiContactsFill />,
+      label: "CONTATOS",
+      link: "/adicionar",
+    },
+    {
+      id: 4,
+      icon: <AiFillFolderAdd />,
+      label: "ADICIONAR",
+      link: "/adicionar",
+    },
+  ];
 
   return (
-    <div>
+    <div className={`${navBarClasses}`}>
       <ul className="flex justify-around w-full ">
-        <Link href={navigationList[activeItemIndex].link}>
-          <div onClick={handleItemPrev}>
-            <span>Anterior</span>
-          </div>
-        </Link>
-        {navigationList.map((item): JSX.Element => {
+        {SidebarItems.map((item, index): JSX.Element => {
           return (
             <li key={item.id}>
-              <Link href={item.link}>
-                <span
-                  className={`${sidebarLabelClasses}`}
-                  style={{
-                    color: activeItemIndex === item.id ? "purple" : "",
-                  }}
-                >
-                  {item.icon} {item.label}
-                </span>
-              </Link>
+              <span
+                className={`${sidebarLabelClasses}`}
+                style={{
+                  color: `${index === activeItemIndex ? "purple" : ""}`,
+                }}
+                onClick={() => handleChangePage(item.id)}
+              >
+                {item.icon} {item.label}
+              </span>
             </li>
           );
         })}
-        <Link href={navigationList[activeItemIndex].link}>
-          <div onClick={handleItemNext}>
-            <span>Próximo</span>
-          </div>
-        </Link>
       </ul>
     </div>
   );

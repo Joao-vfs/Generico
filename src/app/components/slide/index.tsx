@@ -1,22 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
+type ListItem = {
+  id: number;
+  component: React.ReactNode;
+  link: string;
+};
+
 type SlideProps = {
-    list: any
-    setCurrentIndex: any,
-    currentIndex: number
-}
+  list: ListItem[];
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+  currentIndex: number;
+};
 
-export const Slide: React.FC<SlideProps> = ({list, setCurrentIndex, currentIndex}) => {
-
+export const Slide: React.FC<SlideProps> = ({
+  list,
+  setCurrentIndex,
+  currentIndex,
+}) => {
+  window.location.href = `/${list[currentIndex].link}`;
   const slideLeft = () => {
-    setCurrentIndex((prevIndex : any) =>
+    setCurrentIndex((prevIndex) =>
       prevIndex > 0 ? prevIndex - 1 : list.length - 1
     );
   };
 
   const slideRight = () => {
-    setCurrentIndex((prevIndex : any) =>
+    setCurrentIndex((prevIndex) =>
       prevIndex < list.length - 1 ? prevIndex + 1 : 0
     );
   };
@@ -29,10 +39,10 @@ export const Slide: React.FC<SlideProps> = ({list, setCurrentIndex, currentIndex
         onClick={slideLeft}
       />
       <div className="w-full h-[90vh] overflow-hidden scroll whitespace-nowrap scrollbar-hide">
-        {list.map((item : any, index : any) => (
+        {list.map((item, index) => (
           <div
             key={item.id}
-            className={`w-full object-cover inline-block p-2 ease-in-out duration-300 ${
+            className={`w-full object-cover inline-block ease-in-out duration-300 ${
               index === currentIndex ? "" : "hidden"
             }`}
           >

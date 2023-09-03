@@ -1,10 +1,4 @@
 import React, { useState } from "react";
-import {
-  generateNavBarClasses,
-  generateSideBarClasses,
-  generateSideBarIconClasses,
-  generateSideBarLabelClasses,
-} from "@/app/utils/tailwindClasses";
 import { AiFillFolderAdd, AiFillProject } from "react-icons/ai";
 import { HiDocumentText } from "react-icons/hi";
 import { RiContactsFill } from "react-icons/ri";
@@ -12,7 +6,7 @@ import { Url } from "next/dist/shared/lib/router/router";
 
 type SidebarProps = {
   active: boolean;
-  handleChangePage: any;
+  handleChangePage: (item: number) => void;
   activeItemIndex: number;
 };
 
@@ -20,7 +14,6 @@ type SidebarItem = {
   id: number;
   label: string;
   icon?: JSX.Element;
-  link: Url;
 };
 
 const Sidebar: React.FC<SidebarProps> = ({
@@ -28,48 +21,50 @@ const Sidebar: React.FC<SidebarProps> = ({
   handleChangePage,
   activeItemIndex,
 }) => {
-  const navBarClasses = generateNavBarClasses(active);
-  const sidebarLabelClasses = generateSideBarLabelClasses(active);
-
-
   const SidebarItems: SidebarItem[] = [
-    { id: 0, label: "J-VFS", link: "/" },
+    { id: 0, label: "J-VFS" },
     {
       id: 1,
-      icon: <HiDocumentText />,
+      icon: <HiDocumentText size={30} />,
       label: "SOBRE",
-      link: "/adicionar",
     },
     {
       id: 2,
-      icon: <AiFillProject />,
+      icon: <AiFillProject size={30} />,
       label: "PROJETOS",
-      link: "/adicionar",
     },
     {
       id: 3,
-      icon: <RiContactsFill />,
+      icon: <RiContactsFill size={30} />,
       label: "CONTATOS",
-      link: "/adicionar",
     },
     {
       id: 4,
-      icon: <AiFillFolderAdd />,
+      icon: <AiFillFolderAdd size={30} />,
       label: "ADICIONAR",
-      link: "/adicionar",
     },
   ];
 
   return (
-    <div className={`${navBarClasses}`}>
+    <div
+      className={`${`w-full h-[10%]  p-2 border-b-2 ${
+        active
+          ? "bg-black text-white border-white"
+          : " bg-white text-black border-black"
+      } animate-fade-left`}`}
+    >
       <ul className="flex justify-around w-full ">
         {SidebarItems.map((item, index): JSX.Element => {
           return (
             <li key={item.id}>
               <span
-                className={`${sidebarLabelClasses}`}
+                className={`  ${
+                  active ? "" : ""
+                } text-1xl flex  gap-[1rem] cursor-pointer animate-fade-left hover:border-b-2`}
                 style={{
-                  color: `${index === activeItemIndex ? "purple" : ""}`,
+                  borderBottom: `${
+                    index === activeItemIndex ? "solid 2px black" : ""
+                  }`,
                 }}
                 onClick={() => handleChangePage(item.id)}
               >

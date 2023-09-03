@@ -9,7 +9,6 @@ module.exports = {
     extend: {
       animation: {
         "typing-text": "typing-text 4s steps(40) 1s both ",
-        "typing-italic": "typing-italic 4s steps(40)  both ",
         "fade-up": "fade-up 1s ease-out",
         "fade-left": "fade-left 1s ease-out",
         "dark-mode-left": "dark-mode-left 1s ease-out both ",
@@ -17,10 +16,6 @@ module.exports = {
       },
       keyframes: {
         "typing-text": {
-          from: { width: "0%" },
-          to: { width: "100%" },
-        },
-        "typing-italic": {
           from: { width: "0%" },
           to: { width: "100%" },
         },
@@ -42,14 +37,9 @@ module.exports = {
         },
       },
       colors: {
-        gray_weight: "#1C1C1C",
-        gray: "#696969	",
-        gray_lightweight: "#808080",
-        dark_gray: "#A9A9A9",
-        blue: "#00BFFF",
         white: "#ffffff",
       },
     },
   },
-  plugins: [require('tailwind-scrollbar-hide')],
+  plugins: [require("tailwind-scrollbar-hide")],
 };

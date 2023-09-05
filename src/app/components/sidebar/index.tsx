@@ -1,14 +1,10 @@
-import React, { useState } from "react";
-import { AiFillFolderAdd, AiFillProject } from "react-icons/ai";
+import React, { useContext, useState } from "react";
+import { AiFillFolderAdd, AiFillProject, AiFillHome } from "react-icons/ai";
 import { HiDocumentText } from "react-icons/hi";
 import { RiContactsFill } from "react-icons/ri";
-import { Url } from "next/dist/shared/lib/router/router";
-
-type SidebarProps = {
-  active: boolean;
-  handleChangePage: (item: number) => void;
-  activeItemIndex: number;
-};
+import userContext from "@/app/contexts";
+import { isMobile } from "@/app/utils/isMobile";
+import { DarkMode } from "../dakMode";
 
 type SidebarItem = {
   id: number;
@@ -16,13 +12,15 @@ type SidebarItem = {
   icon?: JSX.Element;
 };
 
-const Sidebar: React.FC<SidebarProps> = ({
-  active,
-  handleChangePage,
-  activeItemIndex,
-}) => {
+const Sidebar: React.FC = () => {
+  const userContextData = useContext(userContext);
+  if (!userContextData) {
+    return null;
+  }
+  const { activeDarkMode, currentIndex, handleChangePage } = userContextData;
+  const responsiveness = isMobile();
   const SidebarItems: SidebarItem[] = [
-    { id: 0, label: "J-VFS" },
+    { id: 0, icon: <AiFillHome size={30} />, label: "J-VFS" },
     {
       id: 1,
       icon: <HiDocumentText size={30} />,
@@ -47,32 +45,47 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <div
-      className={`${`w-full h-[10%]  p-2 border-b-2 ${
-        active
-          ? "bg-black text-white border-white"
-          : " bg-white text-black border-black"
-      } animate-fade-left`}`}
+      className={`${`w-full h-[10%]  p-2 ${
+        activeDarkMode ? "bg-black text-white" : " bg-white text-black "
+      } animate-fade-up`}`}
     >
-      <ul className="flex justify-around w-full ">
+      <ul className="flex justify-around items-center w-full ">
         {SidebarItems.map((item, index): JSX.Element => {
           return (
             <li key={item.id}>
-              <span
-                className={`  ${
-                  active ? "" : ""
-                } text-1xl flex  gap-[1rem] cursor-pointer animate-fade-left hover:border-b-2`}
-                style={{
-                  borderBottom: `${
-                    index === activeItemIndex ? "solid 2px black" : ""
-                  }`,
-                }}
-                onClick={() => handleChangePage(item.id)}
-              >
-                {item.icon} {item.label}
-              </span>
+              {responsiveness ? (
+                <span
+                  className={`text-1xl flex items-center gap-[1rem] cursor-pointer hover:border-b-2 animate-fade-up`}
+                  style={{
+                    borderBottom: `${
+                      index === currentIndex
+                        ? `solid 2px ${activeDarkMode ? "white" : "black"}`
+                        : ""
+                    }`,
+                  }}
+                  onClick={() => handleChangePage(item.id)}
+                >
+                  {item.icon}
+                </span>
+              ) : (
+                <div
+                  className={`text-1xl flex justify-center items-center gap-[1rem] cursor-pointer hover:border-b-2 animate-fade-up`}
+                  style={{
+                    borderBottom: `${
+                      index === currentIndex
+                        ? `solid 2px ${activeDarkMode ? "white" : "black"}`
+                        : ""
+                    }`,
+                  }}
+                  onClick={() => handleChangePage(item.id)}
+                >
+                  <span>{item.icon}</span> <span>{item.label}</span>
+                </div>
+              )}
             </li>
           );
         })}
+        <DarkMode />
       </ul>
     </div>
   );

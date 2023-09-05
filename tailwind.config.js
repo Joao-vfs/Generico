@@ -11,6 +11,7 @@ module.exports = {
         "typing-text": "typing-text 4s steps(40) 1s both ",
         "fade-up": "fade-up 1s ease-out",
         "fade-left": "fade-left 1s ease-out",
+        "fade-rigth": "fade-rigth 1s ease-out",
         "dark-mode-left": "dark-mode-left 1s ease-out both ",
         "dark-mode-rigth": "dark-mode-rigth 1s ease-out both ",
       },
@@ -27,6 +28,10 @@ module.exports = {
           from: { opacity: 0, transform: "translateX(-100px)" },
           to: { opacity: 1, transform: "translateX(0)" },
         },
+        "fade-rigth": {
+          from: { opacity: 0, transform: "translateX(100px)" },
+          to: { opacity: 1, transform: "translateX(0)" },
+        },
         "dark-mode-left": {
           from: { transform: "translateX(-3rem)" },
           to: { transform: "translateX(0%)" },
@@ -41,5 +46,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [],
 };

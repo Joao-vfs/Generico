@@ -1,11 +1,23 @@
 "use client";
 
-import React from "react";
+import userContext from "@/app/contexts";
+import { isMobile } from "@/app/utils/isMobile";
+import React, { useContext } from "react";
 
 export const About: React.FC = () => {
+  const userContextData = useContext(userContext);
+  if (!userContextData) {
+    return null;
+  }
+  const { moveArrow } = userContextData;
+  const responsiveness = isMobile()
   return (
-    <div className="flex flex-col whitespace-normal justify-center text-center h-screen animate-fade-left">
-      <h1 className="">SOBRE</h1>
+    <div
+      className={`text-center ${responsiveness ? 'text-sm p-10' : 'text-xl'} ${
+        moveArrow ? "animate-fade-rigth" : "animate-fade-left"
+      } `}
+    >
+      <h1>SOBRE</h1>
       <p>
         Como desenvolvedor front-end, minha experiência e habilidades se
         destacam em um campo em constante evolução. Com um domínio sólido do

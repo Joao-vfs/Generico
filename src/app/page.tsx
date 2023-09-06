@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { About, Add, Contacts, Projects } from "./pages";
-import { DarkMode } from "./components/dakMode";
 import Sidebar from "./components/sidebar";
 import Main from "./components/main";
 import { Slide } from "./components/slide";
@@ -14,7 +13,7 @@ export default function Home() {
   const [moveArrow, setMoveArrow] = useState<boolean>(false);
 
   const list = [
-    { id: 0, link: "#s-inicial", component: <Main  /> },
+    { id: 0, link: "#s-inicial", component: <Main /> },
     { id: 2, link: "#s-about", component: <About /> },
     { id: 3, link: "#s-projects", component: <Projects /> },
     { id: 4, link: "#s-contacts", component: <Contacts /> },
@@ -38,12 +37,12 @@ export default function Home() {
         setCurrentIndex,
         list,
         handleToggleActive,
-        setMoveArrow,
         moveArrow,
+        setMoveArrow,
       }}
     >
       <div
-        className={`relative flex flex-col h-screen overflow-hidden transition-colors duration-1000 ease-in-out ${
+        className={`  relative flex flex-col h-screen  overflow-hidden transition-colors duration-1000 ease-in-out ${
           activeDarkMode ? "bg-white text-black" : "bg-black text-white"
         }`}
       >

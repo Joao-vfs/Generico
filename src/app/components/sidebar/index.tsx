@@ -18,7 +18,6 @@ const Sidebar: React.FC = () => {
     return null;
   }
   const { activeDarkMode, currentIndex, handleChangePage } = userContextData;
-  const responsiveness = isMobile();
   const SidebarItems: SidebarItem[] = [
     { id: 0, icon: <AiFillHome size={30} />, label: "J-VFS" },
     {
@@ -45,7 +44,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <div
-      className={`${`w-full h-[10%]  p-2 ${
+      className={`${`w-full h-[10%] mb-3 p-2 ${
         activeDarkMode ? "bg-black text-white" : " bg-white text-black "
       } animate-fade-up`}`}
     >
@@ -53,7 +52,7 @@ const Sidebar: React.FC = () => {
         {SidebarItems.map((item, index): JSX.Element => {
           return (
             <li key={item.id}>
-              {responsiveness ? (
+              {isMobile() ? (
                 <span
                   className={`text-1xl flex items-center gap-[1rem] cursor-pointer hover:border-b-2 animate-fade-up`}
                   style={{

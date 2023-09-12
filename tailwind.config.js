@@ -8,17 +8,27 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        "typing-text": "typing-text 4s steps(40) 1s both ",
+        "waves": "waves 10s linear infinite",
+        "rotate": "rotate 20s linear infinite",
+        "typing-text": "typing-text 4s steps(40) both",
         "fade-up": "fade-up 1s ease-out",
         "fade-left": "fade-left 1s ease-out",
         "fade-rigth": "fade-rigth 1s ease-out",
-        "dark-mode-left": "dark-mode-left 1s ease-out both ",
-        "dark-mode-rigth": "dark-mode-rigth 1s ease-out both ",
+        "dark-mode-left": "dark-mode-left 0.5s ease-out both ",
+        "dark-mode-rigth": "dark-mode-rigth 0.5s ease-out both ",
       },
       keyframes: {
+        waves: {
+          from: { transform: "rotate(0deg) " },
+          to: { transform: "rotate(360deg) " },
+        },
+        "rotate": {
+          from: { transform: "rotate(0deg) scale(1)" },
+          to: { transform: "rotate(-360deg) scale(1)" },
+        },
         "typing-text": {
-          from: { width: "0%" },
-          to: { width: "100%" },
+          from: { width: "0ch" },
+          to: { width: "50ch" },
         },
         "fade-up": {
           from: { opacity: 0, transform: "translateY(-100px)" },
@@ -29,7 +39,7 @@ module.exports = {
           to: { opacity: 1, transform: "translateX(0)" },
         },
         "fade-rigth": {
-          from: { opacity: 0, transform: "translateX(100px)" },
+          from: { opacity: 0, transform: "translateX(-100px)" },
           to: { opacity: 1, transform: "translateX(0)" },
         },
         "dark-mode-left": {

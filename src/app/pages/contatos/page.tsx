@@ -11,7 +11,7 @@ export const Contacts: React.FC = () => {
   const { moveArrow } = userContextData;
   return (
     <div
-      className={`flex h-screen justify-center items-center ${
+      className={`flex justify-center items-center ${
         moveArrow ? "animate-fade-rigth" : "animate-fade-left"
       } `}
     >

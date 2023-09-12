@@ -1,8 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Archivo } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-const archivo = Archivo({
+const poppins = Poppins({
   subsets: ["latin"],
   weight: "400",
 });
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={`${archivo.className}`}>{children}</body>
+      <body className={`${poppins.className}`}>{children}</body>
     </html>
   );
 }

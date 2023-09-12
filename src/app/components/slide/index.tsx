@@ -1,6 +1,6 @@
 import userContext from "@/app/contexts";
 import { isMobile } from "@/app/utils/isMobile";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 export const Slide: React.FC = () => {
@@ -25,8 +25,8 @@ export const Slide: React.FC = () => {
   };
 
   return (
-    <div className=" relative flex items-center">
-      <div className="w-full h-auto overflow-auto">
+    <div className=" flex justify-center items-center ">
+      <div className="w-full h-screen flex flex-col justify-center items-center px-32 overflow-auto ">
         {list.map((item, index) => (
           <div
             key={item.id}
@@ -37,11 +37,10 @@ export const Slide: React.FC = () => {
             {item.component}
           </div>
         ))}
-
         {isMobile() ? (
           <div
             className={`p-2 h-16 w-full fixed bottom-0  ${
-              activeDarkMode ? "text-white bg-black" : "text-black bg-white"
+              activeDarkMode ? "text-white bg-[#212121]" : "text-black bg-white"
             } `}
           >
             <a href={`${list[currentIndex].link}`}>
@@ -73,12 +72,35 @@ export const Slide: React.FC = () => {
             <a href={`${list[currentIndex].link}`}>
               <MdChevronRight
                 size={40}
-                className={`opacity-50 cursor-pointer hover:opacity-100 fixed right-2 top-[50%]`}
+                className={`opacity-50 z-50 cursor-pointer hover:opacity-100 fixed right-2 top-[50%]`}
                 onClick={slideRight}
               />
             </a>
           </>
         )}
+      </div>
+      <div className="animate-fade-left">
+        <span
+          className={`animate-waves absolute right-[-17%] top-[-10%] z-20 w-96 h-[25rem] bg-[#0066FF] rounded-full`}
+        />
+        <span
+          className={`animate-waves absolute right-[-20%] top-[28%] z-20 w-96 h-[25rem] bg-[#0066FF] rounded-full`}
+        />
+        <span
+          className={`animate-waves absolute right-[-15%] top-[15%] z-10 w-96 h-[25rem] bg-[#0085FF] rounded-full`}
+        />
+        <span
+          className={`animate-waves absolute right-[-12%] top-[50%] z-10 w-96 h-[25rem] bg-[#0085FF] rounded-full`}
+        />
+        <span
+          className={`animate-waves absolute right-[-18%] top-[27%] z-10 w-96 h-[25rem] bg-[#04578E] rounded-full`}
+        />
+        <span
+          className={`animate-waves absolute right-[-15%] top-[50%] z-10 w-96 h-[25rem] bg-[#04578E] rounded-full`}
+        />
+        <span
+          className={`animate-waves absolute right-[-10%] top-[65%] z-10 w-96 h-[25rem] bg-[#0066FF] rounded-full`}
+        />
       </div>
     </div>
   );

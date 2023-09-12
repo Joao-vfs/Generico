@@ -4,40 +4,56 @@ import React, { useContext } from "react";
 import Button from "../button";
 import userContext from "@/app/contexts";
 import { isMobile } from "@/app/utils/isMobile";
+import Image from "next/image";
+import JOAO from "../../assets/img/joao.png";
 
 const Main: React.FC = () => {
   const userContextData = useContext(userContext);
   if (!userContextData) {
     return null;
   }
-  const { moveArrow } = userContextData;
+  const { moveArrow, activeDarkMode } = userContextData;
   return (
-    <main className="h-screen flex flex-col text-center justify-center items-center ">
+    <main
+      className={`relative text-left flex justify-around p-16 ${
+        activeDarkMode ? "text-[#323232]" : "text-white"
+      }  ${moveArrow ? "animate-fade-rigth" : "animate-fade-left"} `}
+    >
       <section>
-        <div>
-          <h1
-            className={`${
-              !isMobile() ? "text-4xl" : "text-2xl"
-            } overflow-hidden whitespace-nowrap  ${
-              moveArrow ? "animate-fade-rigth" : "animate-fade-left"
-            }`}
-          >
-            Olá, eu sou o João Vitor
-            <br />
-            <em>Desenvolvedor Front-End.</em>
+        <div className={`w-[28rem] h-[10rem] mb-16 `}>
+          <h1 className={`mb-4 ${!isMobile() ? "text-4xl " : "text-2xl"}`}>
+            Olá meu nome é <br />{" "}
+            <strong className=" bg-clip-text bg-gradient-to-r from-[#F59E0B] to-[#EF4444] text-transparent">
+              {" "}
+              João Vitor
+            </strong>{" "}
+            e sou <br />{" "}
+            <strong className=" whitespace-nowrap bg-clip-text overflow-hidden bg-gradient-to-r from-[#F59E0B] to-[#EF4444] text-transparent">
+              Desenvolvedor Front end
+            </strong>
           </h1>
-        </div>
-        <article>
-          <div
-            className={`flex flex-wrap justify-center mt-4 ${
-              !isMobile() ? "gap-[2.5rem]" : "gap-[15px]"
-            }`}
+
+          <span
+            className={`${
+              activeDarkMode ? "text-[#323232]" : "text-white"
+            } text-sm`}
           >
-            <Button title="" />
-            <Button title="" />
-          </div>
-        </article>
+            Apaixonado pelas áreas de Frontend e Desenvolvimento. Gosto de
+            construir Interface de site de rápido desempenho e bem projetada com
+            as mais recentes tecnologias.
+          </span>
+        </div>
+        <Button title="Ver Projetos" />
       </section>
+      <div className="shadow-2xl top-0 w-80 h-80 bg-gradient-to-r from-[#F59E0B] to-[#EF4444] flex justify-center items-center rounded-br-[70%] rounded-tr-[70%] rounded-bl-[70%] rounded-tl-[30%]">
+        <Image
+          src={JOAO}
+          width={600}
+          height={600}
+          alt=""
+          className="object-cover rounded-full mt-[-6.5rem]"
+        />
+      </div>
     </main>
   );
 };

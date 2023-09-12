@@ -1,7 +1,7 @@
 import userContext from "@/app/contexts";
 import { isMobile } from "@/app/utils/isMobile";
 import React, { useContext } from "react";
-import { BsCircleFill, BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 export const DarkMode: React.FC = () => {
   const userContextData = useContext(userContext);
@@ -10,43 +10,21 @@ export const DarkMode: React.FC = () => {
   }
   const { activeDarkMode, handleToggleActive } = userContextData;
   return (
-    <>
-      {!isMobile() ? (
-        <div
-          className={`cursor-pointer items-center rounded-[50px] w-[5rem] h-[2rem] p-1 flex ${
-            activeDarkMode ? "justify-start bg-white" : "justify-end bg-black"
-          }  `}
-          onClick={handleToggleActive}
-        >
-          <BsCircleFill
-            className={`${
-              activeDarkMode
-                ? "animate-dark-mode-rigth text-black"
-                : "animate-dark-mode-left text-white"
-            } text-2xl`}
-          />
-        </div>
-      ) : (
-        <div
-          className={`cursor-pointer  items-center rounded-[50%] w-[2rem] h-[2rem] p-1 flex  ${
-            activeDarkMode ? " bg-white " : " bg-black "
-          }  `}
-        >
-          {activeDarkMode ? (
-            <BsFillMoonFill
-              onClick={handleToggleActive}
-              size={40}
-              color={"#4169e1"}
-            />
-          ) : (
-            <BsFillSunFill
-              onClick={handleToggleActive}
-              size={40}
-              color={"#FFFF00"}
-            />
-          )}
-        </div>
-      )}
-    </>
+    <div
+      className={`relative cursor-pointer bg-transparent border-2 gap-6 items-center justify-center rounded-full flex ${
+        activeDarkMode ? " border-[#323232]" : " border-white"
+      } ${isMobile() ? "w-auto h-auto" : "w-20 h-8"} `}
+      onClick={handleToggleActive}
+    >
+      <div
+        className={`${
+          activeDarkMode
+            ? "animate-dark-mode-left border-2 border-black rounded-full right-0"
+            : "animate-dark-mode-rigth border-2 border-white rounded-full left-0"
+        } absolute bg-[#0085FF] -z-10 w-8 h-8`}
+      />
+      <FaMoon size={30}/>
+      <FaSun size={30}/>
+    </div>
   );
 };

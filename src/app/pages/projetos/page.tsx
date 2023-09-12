@@ -1,5 +1,6 @@
 "use client";
 
+import Alert from "@/app/components/alert";
 import Cards from "@/app/components/card";
 import userContext from "@/app/contexts";
 import React, { useContext } from "react";
@@ -13,7 +14,7 @@ export const Projects: React.FC = () => {
 
   return (
     <div
-      className={`flex flex-col flex-wrap h-screen text-center  ${
+      className={`flex flex-col flex-wrap text-center  ${
         moveArrow ? "animate-fade-rigth" : "animate-fade-left"
       } `}
     >
@@ -47,6 +48,7 @@ export const Projects: React.FC = () => {
           button="Ver Mais"
         />
       </div>
+      <Alert  />
     </div>
   );
 };

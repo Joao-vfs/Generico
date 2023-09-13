@@ -2,8 +2,24 @@
 
 import userContext from "@/app/contexts";
 import { isMobile } from "@/app/utils/isMobile";
-import React, { useContext } from "react";
-import { AiOutlineGithub } from "react-icons/ai";
+import React, { useContext, useState } from "react";
+import {
+  SiAzuredevops,
+  SiCss3,
+  SiFigma,
+  SiGithub,
+  SiGitlab,
+  SiHtml5,
+  SiJavascript,
+  SiNextdotjs,
+  SiReact,
+  SiRedux,
+  SiSass,
+  SiStorybook,
+  SiStyledcomponents,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
 
 export const About: React.FC = () => {
   const userContextData = useContext(userContext);
@@ -11,6 +27,24 @@ export const About: React.FC = () => {
     return null;
   }
   const { moveArrow } = userContextData;
+
+  const IconsDashBord = [
+    { name: "Azuredevops", icons: <SiAzuredevops size={60} /> },
+    { name: "Css", icons: <SiCss3 size={60} /> },
+    { name: "Figma", icons: <SiFigma size={60} /> },
+    { name: "Github", icons: <SiGithub size={60} /> },
+    { name: "Gitlab", icons: <SiGitlab size={60} /> },
+    { name: "Html", icons: <SiHtml5 size={60} /> },
+    { name: "Javascript", icons: <SiJavascript size={60} /> },
+    { name: "Nextjs", icons: <SiNextdotjs size={60} /> },
+    { name: "React", icons: <SiReact size={60} /> },
+    { name: "Redux", icons: <SiRedux size={60} /> },
+    { name: "Sass", icons: <SiSass size={60} /> },
+    { name: "Storybook", icons: <SiStorybook size={60} /> },
+    { name: "Styledcomponents", icons: <SiStyledcomponents size={60} /> },
+    { name: "Tailwindcss", icons: <SiTailwindcss size={60} /> },
+    { name: "Typescript", icons: <SiTypescript size={60} /> },
+  ];
 
   return (
     <div
@@ -36,35 +70,17 @@ export const About: React.FC = () => {
             contribuir para projetos inovadores.
           </p>
         </div>
-        {/* <span className="absolute right-[-8%] top-[-70%] bg-[#F2672E] w-48 h-48 rounded-full" />
-        <span className="absolute left-[50%] top-[-80%] bg-[#F2672E] w-24 h-24 rounded-full" />
-        <span className="absolute right-[42%] bottom-[-50%] bg-[#F2672E] w-32 h-32 rounded-full" />
-        <span className="absolute right-[20%] bottom-[-70%] bg-[#F2672E] w-14 h-14 rounded-full" /> */}
-        <div className="z-50 w-[40rem] h-[30rem] border-2 border-blue-500 absolute right-0 backdrop-blur-md shadow-2xl backdrop-filter flex flex-wrap gap-8 p-24 bg-trasnparent rounded-3xl">
-          <div className="rounded-lg w-20 h-20 border-2  border-indigo-500 bg-transparent flex items-center justify-center cursor-pointer hover:scale-105">
-            <AiOutlineGithub size={80} />
-          </div>
-          <div className="rounded-lg  w-20 h-20 border-2 border-indigo-500 bg-transparent flex items-center justify-center cursor-pointer hover:scale-105">
-            <AiOutlineGithub size={80} />
-          </div>
-          <div className="rounded-lg  w-20 h-20 border-2 border-indigo-500 bg-transparent flex items-center justify-center cursor-pointer hover:scale-105">
-            <AiOutlineGithub size={80} />
-          </div>
-          <div className="rounded-lg  w-20 h-20 border-2 border-indigo-500 bg-transparent flex items-center justify-center cursor-pointer hover:scale-105">
-            <AiOutlineGithub size={80} />
-          </div>
-          <div className="rounded-lg  w-20 h-20 border-2 border-indigo-500 bg-transparent flex items-center justify-center cursor-pointer hover:scale-105">
-            <AiOutlineGithub size={80} />
-          </div>
-          <div className="rounded-lg  w-20 h-20 border-2 border-indigo-500 bg-transparent flex items-center justify-center cursor-pointer hover:scale-105">
-            <AiOutlineGithub size={80} />
-          </div>
-          <div className="rounded-lg  w-20 h-20 border-2 border-indigo-500 bg-transparent flex items-center justify-center cursor-pointer hover:scale-105">
-            <AiOutlineGithub size={80} />
-          </div>
-          <div className="rounded-lg  w-20 h-20 border-2 border-indigo-500 bg-transparent flex items-center justify-center cursor-pointer hover:scale-105">
-            <AiOutlineGithub size={80} />
-          </div>
+        <div className=" w-[40rem] h-[30rem] border-2 border-blue-500 absolute right-0 backdrop-blur-md shadow-2xl backdrop-filter flex flex-wrap gap-8 bg-trasnparent rounded-3xl items-center justify-center">
+          {IconsDashBord.map((card) => {
+            return (
+              <div
+                className="rounded-lg realtive border-2 border-indigo-500 bg-transparent p-2 flex items-center justify-center transition ease-in-out duration-100 delay-100 cursor-pointer "
+                key={card.name}
+              >
+                {card.icons}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

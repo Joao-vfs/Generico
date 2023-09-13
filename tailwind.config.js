@@ -11,7 +11,7 @@ module.exports = {
         "waves": "waves 10s linear infinite",
         "rotate": "rotate 20s linear infinite",
         "typing-text": "typing-text 4s steps(40) both",
-        "fade-up": "fade-up 1s ease-out",
+        "fade-up": "fade-up 0.5s ease-out",
         "fade-left": "fade-left 1s ease-out",
         "fade-rigth": "fade-rigth 1s ease-out",
         "dark-mode-left": "dark-mode-left 0.5s ease-out both ",

@@ -41,7 +41,7 @@ const Alert: React.FC = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative z-50 ">
       <AiFillFolderAdd
         className="fixed bottom-0 right-4 cursor-pointer"
         size={80}

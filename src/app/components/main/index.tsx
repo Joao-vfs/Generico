@@ -28,7 +28,7 @@ const Main: React.FC = () => {
               João Vitor
             </strong>{" "}
             e sou <br />{" "}
-            <strong className=" whitespace-nowrap bg-clip-text overflow-hidden bg-gradient-to-r from-[#F59E0B] to-[#EF4444] text-transparent">
+            <strong className="bg-clip-text bg-gradient-to-r from-[#F59E0B] to-[#EF4444] text-transparent">
               Desenvolvedor Front end
             </strong>
           </h1>
@@ -45,7 +45,7 @@ const Main: React.FC = () => {
         </div>
         <Button title="Ver Projetos" />
       </section>
-      <div className="shadow-2xl top-0 w-80 h-80 bg-gradient-to-r from-[#F59E0B] to-[#EF4444] flex justify-center items-center rounded-br-[70%] rounded-tr-[70%] rounded-bl-[70%] rounded-tl-[30%]">
+      <div className="shadow-2xl  w-80 h-80 bg-gradient-to-r from-[#F59E0B] to-[#EF4444] flex justify-center items-center rounded-br-[70%] rounded-tr-[70%] rounded-bl-[70%] rounded-tl-[30%]">
         <Image
           src={JOAO}
           width={600}

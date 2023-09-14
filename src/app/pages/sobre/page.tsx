@@ -156,28 +156,23 @@ export const About: React.FC = () => {
         </div>
         <div className="z-50 w-[40rem] h-[30rem] border-2 border-blue-500 absolute right-0 backdrop-blur-md shadow-2xl backdrop-filter flex flex-wrap gap-8 bg-transparent rounded-3xl items-center justify-center">
           {showSelectedIcon ? (
-            <div className="p-5 flex flex-col items-center gap-20 justify-center text-center">
+            <div className="p-5 flex flex-col items-center gap-20 justify-center text-center animate-fade-up">
               <div className="p-2 flex items-center gap-5 justify-center ">
                 <span>{selectedIcon.icons}</span>
                 <h1>{selectedIcon.name}</h1>
               </div>
               <span className="text-sm">{selectedIcon.content}</span>
               <button
-                className="group cursor-pointer shadow-2xl hover:border-2 w-28 h-10 flex items-center justify-center hover:border-blue-500 rounded-md active:scale-100"
-                title="Go Back"
+                className="group cursor-pointer shadow-2xl hover:border-2 w-28 h-10 flex items-center justify-center 	transition ease-in-out duration-1000 delay-1000 hover:border-white rounded-xl hover:bg-gradient-to-tr hover:from-[#F2672E] hover:to-[#EF4444] hover:scale-110 active:scale-75"
                 onClick={handleSelectedIcon}
               >
-                <AiOutlineLeft
-                  size={30}
-                  color={"#0085FF"}
-                  className="group-hover:scale-125 group-active:scale-75"
-                />
+                Voltar
               </button>
             </div>
           ) : (
             IconsDashBord.map((card) => (
               <div
-                className="rounded-lg border-2 border-blue-500 bg-transparent p-2 flex items-center justify-center transition ease-in-out duration-100 delay-100 cursor-pointer hover:scale-105"
+                className="animate-fade-up rounded-lg border-2 border-blue-500 bg-transparent p-2 flex items-center justify-center transition ease-in-out duration-100 delay-100 cursor-pointer hover:scale-105"
                 key={card.name}
                 onClick={() => handleSelectedIcon(card)}
               >

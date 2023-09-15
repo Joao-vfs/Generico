@@ -13,13 +13,9 @@ const Alert: React.FC = () => {
   const [authenticationEmail, setAuthenticationEmail] = useState("");
   const [authenticationPassword, setAuthenticationEmailPassword] = useState("");
   const [validation, setValidation] = useState(false);
-  const [show , setShow] = useState(false)
 
   useEffect(() => {
-    if (
-      authenticationEmail === "joaojvfs04@gmail.com" &&
-      authenticationPassword === "S@ciAlquimist@1015115"
-    ) {
+    if (authenticationEmail === "teste" && authenticationPassword === "teste") {
       setValidation(true);
     } else {
       setValidation(false);
@@ -30,7 +26,7 @@ const Alert: React.FC = () => {
   if (!userContextData) {
     return null;
   }
-  const { activeDarkMode } = userContextData;
+  const { activeDarkMode, show, setShow } = userContextData;
 
   const handleValidationLogin = () => {
     if (validation) {
@@ -41,9 +37,9 @@ const Alert: React.FC = () => {
   };
 
   return (
-    <div className="relative z-50 ">
+    <div className="relative z-20">
       <AiFillFolderAdd
-        className="fixed bottom-0 right-4 cursor-pointer"
+        className="animate-to-appear fixed bottom-0 right-4 cursor-pointer"
         size={80}
         onClick={() => {
           setShow(!show);
@@ -63,15 +59,16 @@ const Alert: React.FC = () => {
               }}
               size={40}
             />
-            <div className={` flex gap-10`}>
+            <div className={`animate-to-appear flex gap-10`}>
               <div className={`w-96`}>
                 <h1 className="text-2xl">Olá Visitante!</h1>
                 <p>
-                  Espero que esse Portifolio tenha te inspirado te deixado com
+                  Espero que esse Portifolio tenha te inspirado e te deixado com
                   uma ótima experiência mas essa sessão foi por mim para
                   adicionar os trabalhos que está inserido na sessão Projetos,
                   isso mostra o meu conhecimento com banco de dados e sistema
-                  CRUD. Mas eu não posso deixar você adicionar projetos :(.
+                  CRUD. Mas eu não posso deixar você adicionar projetos :(
+                  <br />
                   Então foi criado essa tela de login pra certificar que apenas
                   eu consiga fazer esse gerenciamneto, obrigado por visitar esse
                   portifólio e espero que entre em contato.
@@ -113,9 +110,9 @@ const Alert: React.FC = () => {
                     onClick={handleValidationLogin}
                     className={`${
                       activeDarkMode
-                        ? "bg-[#212121] hover:bg-gray-800 text-white "
-                        : " bg-white hover:bg-gray-400 text-black"
-                    }  font-semibold p-2 mt-3 rounded w-[100%]`}
+                        ? "bg-[#212121] text-white "
+                        : " bg-white text-black"
+                    }  font-semibold p-2 hover:scale-105 active:scale-95 mt-3 rounded w-[100%]`}
                   >
                     Login
                   </button>

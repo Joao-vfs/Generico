@@ -3,7 +3,7 @@
 import userContext from "@/app/contexts";
 import Image from "next/image";
 import React, { useContext } from "react";
-import JOAO from "../../assets/img/joao.png";
+import JOAO from "../../assets/img/view-3d-personal-computer-with-workstation-office-items.jpg";
 import {
   SiGithub,
   SiInstagram,
@@ -32,8 +32,8 @@ export const Contacts: React.FC = () => {
       } `}
     >
       <div>
-        <h1 className="text-4xl bg-clip-text bg-gradient-to-r from-[#F59E0B] to-[#EF4444] text-transparent">
-          CONTATOS.
+        <h1 className="text-4xl font-bold bg-clip-text bg-gradient-to-r from-[#F59E0B] to-[#EF4444] text-transparent ">
+          Contatos.
         </h1>
         <span>Entre em contato comigo pelas redes sociais ou e-mail.</span>
         <div className="flex flex-wrap gap-6 py-5">
@@ -57,13 +57,13 @@ export const Contacts: React.FC = () => {
           })}
         </div>
       </div>
-      <div className="shadow-2xl  w-80 h-80  bg-gradient-to-r from-[#F59E0B] to-[#EF4444] flex justify-center items-center rounded-br-[70%] rounded-tr-[70%] rounded-bl-[70%] rounded-tl-[30%]">
+      <div className="shadow-2xl w-96 h-96  bg-gradient-to-r from-[#F59E0B] to-[#EF4444] flex justify-center items-center rounded-br-[70%] rounded-tr-[70%] rounded-bl-[70%] rounded-tl-[70%]">
         <Image
           src={JOAO}
-          width={600}
-          height={600}
+          width={450}
+          height={450}
           alt=""
-          className="object-cover rounded-full mt-[-6.5rem]"
+          className="object-cover rounded-full"
         />
       </div>
     </div>

@@ -3,16 +3,16 @@
 import userContext from "@/app/contexts";
 import { isMobile } from "@/app/utils/isMobile";
 import React, { useContext, useState } from "react";
-import { AiOutlineLeft } from "react-icons/ai";
+import { AiOutlineLeft, AiOutlineArrowLeft } from "react-icons/ai";
 import {
   SiAzuredevops,
   SiCss3,
   SiFigma,
-  SiGithub,
   SiGitlab,
   SiHtml5,
   SiJavascript,
   SiNextdotjs,
+  SiPostman,
   SiReact,
   SiRedux,
   SiSass,
@@ -46,12 +46,6 @@ export const About: React.FC = () => {
         "Uma ferramenta de design de interface do usuário (UI) e experiência do usuário (UX) baseada na web, colaborativa e fácil de usar.",
     },
     {
-      name: "GitHub",
-      icons: <SiGithub size={60} />,
-      content:
-        "Uma plataforma de hospedagem de código-fonte que permite o controle de versão e colaboração em projetos de software.",
-    },
-    {
       name: "GitLab",
       icons: <SiGitlab size={60} />,
       content:
@@ -74,6 +68,12 @@ export const About: React.FC = () => {
       icons: <SiNextdotjs size={60} />,
       content:
         "Um framework de React para construção de aplicativos web rápidos e escaláveis.",
+    },
+    {
+      name: "PostMan",
+      icons: <SiPostman size={60} />,
+      content:
+        "O Postman é uma ferramenta que facilita o teste, a validação e a documentação de APIs. Ele oferece uma interface intuitiva para enviar solicitações HTTP e automatizar tarefas de teste, tornando-o essencial para desenvolvedores que trabalham com APIs em seus projetos.",
     },
     {
       name: "React",
@@ -151,28 +151,34 @@ export const About: React.FC = () => {
             equipes de desenvolvimento web, sempre pronto para enfrentar
             desafios e contribuir para projetos inovadores.
             <br />
-            Aqui do lado mostro algumas Tecnológias de que dominio.
+            Aqui do lado mostro algumas Tecnológias que dominio.
           </p>
         </div>
-        <div className="z-50 w-[40rem] h-[30rem] border-2 border-blue-500 absolute right-0 backdrop-blur-md shadow-2xl backdrop-filter flex flex-wrap gap-8 bg-transparent rounded-3xl items-center justify-center">
+        <div className="z-50 w-[40rem] h-[30rem] border-2 border-blue-500 absolute right-0 backdrop-blur-md shadow-2xl backdrop-filter flex flex-wrap gap-8 bg-transparent animate-to-appear rounded-3xl items-center justify-center">
           {showSelectedIcon ? (
-            <div className="p-5 flex flex-col items-center gap-20 justify-center text-center animate-fade-up">
+            <div className="p-5 flex flex-col items-center gap-20 justify-center text-center animate-to-appear">
               <div className="p-2 flex items-center gap-5 justify-center ">
                 <span>{selectedIcon.icons}</span>
                 <h1>{selectedIcon.name}</h1>
               </div>
               <span className="text-sm">{selectedIcon.content}</span>
               <button
-                className="group cursor-pointer shadow-2xl hover:border-2 w-28 h-10 flex items-center justify-center 	transition ease-in-out duration-1000 delay-1000 hover:border-white rounded-xl hover:bg-gradient-to-tr hover:from-[#F2672E] hover:to-[#EF4444] hover:scale-110 active:scale-75"
+                className="group relative cursor-pointer shadow-2xl hover:border-2 w-28 h-10 flex items-center justify-center 	transition-all ease-in-out duration-400 delay-100 rounded-xl hover:border-indigo-500 active:scale-75"
                 onClick={handleSelectedIcon}
               >
-                Voltar
+                <span className="transition-all overflow-hidden ease-in-out duration-500 delay-100 text-indigo-500  group-hover:text-transparent">
+                  Voltar
+                </span>
+                <AiOutlineArrowLeft
+                  size={35}
+                  className="transition-all absolute ease-in-out duration-500 delay-100 translate-x-11 text-transparent group-hover:-translate-x-0 group-hover:text-indigo-500"
+                />
               </button>
             </div>
           ) : (
             IconsDashBord.map((card) => (
               <div
-                className="animate-fade-up rounded-lg border-2 border-blue-500 bg-transparent p-2 flex items-center justify-center transition ease-in-out duration-100 delay-100 cursor-pointer hover:scale-105"
+                className="animate-to-appear rounded-lg border-2 border-blue-500 bg-transparent p-2 flex items-center justify-center transition-all ease-in-out duration-200 delay-200 cursor-pointer hover:scale-125"
                 key={card.name}
                 onClick={() => handleSelectedIcon(card)}
               >

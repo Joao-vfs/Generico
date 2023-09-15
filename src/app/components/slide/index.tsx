@@ -79,7 +79,7 @@ export const Slide: React.FC = () => {
           </>
         )}
       </div>
-      {/* <div >
+      <div >
         <span
           className={`animate-waves absolute right-[-17%] top-[-10%] z-20 w-96 h-[25rem] bg-[#0066FF] rounded-full`}
         />
@@ -101,7 +101,7 @@ export const Slide: React.FC = () => {
         <span
           className={`animate-waves absolute right-[-10%] top-[65%] z-10 w-96 h-[25rem] bg-[#0066FF] rounded-full`}
         />
-      </div> */}
+      </div>
     </div>
   );
 };

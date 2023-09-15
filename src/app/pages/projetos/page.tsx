@@ -3,7 +3,9 @@
 import Alert from "@/app/components/alert";
 import Cards from "@/app/components/card";
 import userContext from "@/app/contexts";
+import Image from "next/image";
 import React, { useContext } from "react";
+import teste from "../../assets/img/5539119.jpg";
 
 export const Projects: React.FC = () => {
   const userContextData = useContext(userContext);
@@ -13,42 +15,32 @@ export const Projects: React.FC = () => {
   const { moveArrow } = userContextData;
 
   return (
-    <div
-      className={`flex flex-col flex-wrap text-center  ${
-        moveArrow ? "animate-fade-rigth" : "animate-fade-left"
-      } `}
-    >
+    <div className={`flex flex-col flex-wrap text-center`}>
       <div
         className={`flex flex-wrap gap-[1rem] p-10 justify-around text-center mb-24 ${
           moveArrow ? "animate-fade-rigth" : "animate-fade-left"
         } `}
       >
         <Cards
-          title="Projeto"
-          content=" Como desenvolvedor front-end, minha experiência e habilidades se
-        destacam em um campo em constante evolução. Com um domínio sólido do
-        Redux, StyledComponents e JavaScript, sou capaz de criar aplicações web
-        eficientes e visualmente atraentes. "
+          title="Título"
+          image={<Image src={teste} alt="" />}
+          content="Um Cronograma de estudos, que selciona tarefas e marca e define a quantidade de tempo"
           button="Ver Mais"
         />
         <Cards
-          title="Projeto"
-          content=" Como desenvolvedor front-end, minha experiência e habilidades se
-        destacam em um campo em constante evolução. Com um domínio sólido do
-        Redux, StyledComponents e JavaScript, sou capaz de criar aplicações web
-        eficientes e visualmente atraentes. "
+          title="Título"
+          image={<Image src={teste} alt="" />}
+          content="Um Cronograma de estudos, que selciona tarefas e marca e define a quantidade de tempo"
           button="Ver Mais"
         />
         <Cards
-          title="Projeto"
-          content=" Como desenvolvedor front-end, minha experiência e habilidades se
-        destacam em um campo em constante evolução. Com um domínio sólido do
-        Redux, StyledComponents e JavaScript, sou capaz de criar aplicações web
-        eficientes e visualmente atraentes. "
+          title="Título"
+          image={<Image src={teste} alt="" />}
+          content="Um Cronograma de estudos, que selciona tarefas e marca e define a quantidade de tempo"
           button="Ver Mais"
         />
       </div>
-      <Alert  />
+      <Alert />
     </div>
   );
 };

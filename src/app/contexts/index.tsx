@@ -15,6 +15,8 @@ type ContextProps = {
   handleToggleActive: () => void;
   setMoveArrow: React.Dispatch<React.SetStateAction<boolean>>;
   moveArrow: boolean;
+  show: boolean;
+  setShow: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const userContext = createContext<ContextProps | undefined>(undefined);

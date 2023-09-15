@@ -8,12 +8,13 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        "waves": "waves 10s linear infinite",
-        "rotate": "rotate 20s linear infinite",
+        waves: "waves 10s linear infinite",
+        "to-appear": "to-appear 1.5s ease-in-out",
+        rotate: "rotate 20s linear infinite",
         "typing-text": "typing-text 4s steps(40) both",
         "fade-up": "fade-up 0.5s ease-out",
-        "fade-left": "fade-left 1s ease-out",
-        "fade-rigth": "fade-rigth 1s ease-out",
+        "fade-left": "fade-left 0.5s ease-out",
+        "fade-rigth": "fade-rigth 0.5s ease-out",
         "dark-mode-left": "dark-mode-left 0.5s ease-out both ",
         "dark-mode-rigth": "dark-mode-rigth 0.5s ease-out both ",
       },
@@ -22,7 +23,11 @@ module.exports = {
           from: { transform: "rotate(0deg) " },
           to: { transform: "rotate(360deg) " },
         },
-        "rotate": {
+        "to-appear": {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        rotate: {
           from: { transform: "rotate(0deg) scale(1)" },
           to: { transform: "rotate(-360deg) scale(1)" },
         },

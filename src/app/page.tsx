@@ -11,12 +11,13 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [activeDarkMode, setActiveDarkMode] = useState<boolean>(false);
   const [moveArrow, setMoveArrow] = useState<boolean>(false);
+  const [show, setShow] = useState(false);
 
   const list = [
     { id: 0, link: "#s-inicial", component: <Main /> },
-    { id: 2, link: "#s-about", component: <About /> },
-    { id: 3, link: "#s-projects", component: <Projects /> },
-    { id: 4, link: "#s-contacts", component: <Contacts /> },
+    { id: 1, link: "#s-about", component: <About /> },
+    { id: 2, link: "#s-projects", component: <Projects /> },
+    { id: 2, link: "#s-contacts", component: <Contacts /> },
   ];
   const handleToggleActive = () => {
     setActiveDarkMode(!activeDarkMode);
@@ -30,6 +31,8 @@ export default function Home() {
   return (
     <userContext.Provider
       value={{
+        show,
+        setShow,
         activeDarkMode,
         handleChangePage,
         currentIndex,
@@ -51,7 +54,6 @@ export default function Home() {
         <div className="absolute bottom-[-50%] right-[-30%] bg-[#F2672E] blur-[7rem] rounded-full w-[45rem] h-[45rem] "></div>
         <Sidebar />
         <Slide />
-        
       </div>
     </userContext.Provider>
   );

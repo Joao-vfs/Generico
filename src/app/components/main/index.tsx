@@ -12,7 +12,7 @@ const Main: React.FC = () => {
   if (!userContextData) {
     return null;
   }
-  const { moveArrow, activeDarkMode } = userContextData;
+  const { moveArrow, activeDarkMode, list, handleChangePage } = userContextData;
   return (
     <main
       className={`relative text-left flex justify-around p-16 ${
@@ -43,16 +43,18 @@ const Main: React.FC = () => {
             as mais recentes tecnologias.
           </span>
         </div>
-        <Button title="Ver Projetos" />
+        <a onClick={() => handleChangePage(list[2].id)}>
+          <Button title="Ver Projetos" />
+        </a>
       </section>
       <div className="shadow-2xl  w-80 h-80 bg-gradient-to-r from-[#F59E0B] to-[#EF4444] flex justify-center items-center rounded-br-[70%] rounded-tr-[70%] rounded-bl-[70%] rounded-tl-[30%]">
-        <Image
+        {/* <Image
           src={JOAO}
           width={600}
           height={600}
           alt=""
           className="object-cover rounded-full mt-[-6.5rem]"
-        />
+        /> */}
       </div>
     </main>
   );
